@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Siempre te amaré ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#dff4ff,#ffe3ef);
+    padding:40px 20px;
+    overflow-x:hidden;
+    gap:50px;
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#d63384;
+    text-shadow:3px 3px 10px rgba(0,0,0,.15);
+}
+
+.contenedor-general{
+    display:flex;
+    gap:60px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* ================================= */
+/* SOBRE */
+/* ================================= */
+
+.contenedor{
+    width:420px;
+}
+
+.envoltura-sobre{
+    position:relative;
+    width:420px;
+    height:300px;
+}
+
+/* SOBRE */
+
+.sobre{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+/* SOLAPA SUPERIOR */
+
+.sobre::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+
+    border-top:170px solid var(--solapa);
+    border-left:210px solid transparent;
+    border-right:210px solid transparent;
+
+    transform-origin:top;
+    transition:all .6s ease;
+
+    z-index:11;
+}
+
+/* SOLAPAS INFERIORES */
+
+.solapa-izquierda,
+.solapa-derecha{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10;
+}
+
+.solapa-izquierda{
+    background:var(--cuerpo);
+
+    clip-path:polygon(0 0,0 100%,100% 100%);
+}
+
+.solapa-derecha{
+    background:var(--cuerpo);
+
+    clip-path:polygon(100% 0,0 100%,100% 100%);
+}
+
+/* CARTA */
+
+.carta{
+    position:absolute;
+
+    width:90%;
+    height:90%;
+
+    background:white;
+
+    left:50%;
+    bottom:10px;
+
+    transform:translateX(-50%);
+
+    border-radius:15px;
+
+    padding:15px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+    transition:all .6s ease;
+
+    z-index:5;
+}
+
+.contenido{
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+    border:2px dashed var(--texto);
+    border-radius:10px;
+    padding:15px;
+    font-family:"Marck Script",cursive;
+    color:var(--texto);
+    font-size:20px;
+    line-height:1.6;
+}
+
+.contenido h2{
+    margin-bottom:10px;
+}
+
+/* CORAZÓN CENTRAL */
+
+.corazon{
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    background:var(--heart);
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%) rotate(45deg);
+
+    cursor:pointer;
+
+    z-index:30;
+
+    transition:.5s;
+}
+
+.corazon::before,
+.corazon::after{
+    content:"";
+
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    background:var(--heart);
+
+    border-radius:50%;
+}
+
+.corazon::before{
+    top:-17px;
+}
+
+.corazon::after{
+    left:-17px;
+}
+
+/* ================================= */
+/* APERTURA */
+/* ================================= */
+
+.envoltura-sobre.abierto .sobre::before{
+    transform:rotateX(180deg);
+}
+
+.envoltura-sobre.abierto .carta{
+    transform:translateX(-50%) translateY(-110px);
+    z-index: 15;
+}
+
+.envoltura-sobre.abierto .corazon{
+    transform:translate(-50%,-50%) rotate(225deg);
+}
+
+/* ================================= */
+/* TEMAS */
+/* ================================= */
+
+.rosa{
+    --solapa:#f783ac;
+    --cuerpo:#ffb3c8;
+    --heart:#ff477e;
+    --texto:#7a1f3d;
+}
+
+.azul{
+    --solapa:#74c0fc;
+    --cuerpo:#a5d8ff;
+    --heart:#228be6;
+    --texto:#0b3d5c;
+}
+
+/* ================================= */
+/* SOBRE MORADO */
+/* ================================= */
+
+.morado{
+    --solapa:#c77dff;
+    --cuerpo:#dcb8ff;
+    --heart:#9d4edd;
+    --texto:#4b1d6b;
+}
+
+/* ================================= */
+/* CORAZONES FLOTANTES */
+/* ================================= */
+
+.corazon-flotante{
+    position:fixed;
+
+    bottom:-20px;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    animation:flotar linear forwards;
+}
+
+@keyframes flotar{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(-120vh)
+            rotate(720deg)
+            scale(1.5);
+
+        opacity:0;
+    }
+
+}
+
+/* ================================= */
+/* SCROLL */
+/* ================================= */
+
+.contenido::-webkit-scrollbar{
+    width:6px;
+}
+/* ================================= */
+/* TEXTO HINT */
+/* ================================= */
+
+.hint{
+    width:100%;
+    text-align:center;
+    margin-top:20px;
+    font-family:'Marck Script',cursive;
+    font-size:24px;
+    color:rgba(0,0,0,.75);
+    transition:all .5s ease;
+    user-select:none;
+}
+
+/* Cuando el sobre está abierto */
+
+.envoltura-sobre.abierto + .hint{
+    opacity:.15;
+    transform:translateY(-5px);
+}
+.contenido::-webkit-scrollbar-thumb{
+    background:rgba(0,0,0,.2);
+    border-radius:10px;
+}
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media(max-width:500px){
+
+    h1{
+        font-size:55px;
+    }
+
+    .contenedor,
+    .envoltura-sobre{
+        width:320px;
+        height:240px;
+    }
+
+    .sobre::before{
+        border-top:140px solid var(--solapa);
+        border-left:160px solid transparent;
+        border-right:160px solid transparent;
+    }
+
+    .envoltura-sobre.abierto .carta{
+        transform:translateX(-50%) translateY(-80px);
+    }
+
+}
+/* ================================= */
+/* BOTÓN AUDIO */
+/* ================================= */
+
+.contenedor-audio{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.btn-audio{
+
+    border:none;
+
+    background:linear-gradient(135deg,#9d4edd,#c77dff);
+    color:white;
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.btn-audio:hover{
+    transform:scale(1.05);
+}
+
+.btn-audio:active{
+    transform:scale(.96);
+}
+/* ================================= */
+/* ROSAS FLOTANTES */
+/* ================================= */
+
+.rosa-flotante{
+
+    position:absolute;
+
+    font-size:30px;
+
+    pointer-events:none;
+
+    z-index:999;
+
+    animation:subirRosa 4s linear forwards;
+
+}
+
+@keyframes subirRosa{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity:0;
+
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+            translate(var(--x), -350px)
+            rotate(720deg)
+            scale(1.3);
+
+        opacity:0;
+
+    }
+
+}
+.audio-toggle{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.9);
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.envoltura-sobre.abierto .audio-toggle{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.audio-toggle:hover{
+
+    transform:scale(1.08);
+
+}
+</style>
+</head>
+
+<body>
+
+<h1>Te Am❤️</h1>
+
+<div class="contenedor-general">
+
+    <!-- SOBRE ROSA -->
+
+    <div class="contenedor">
+
+        <div class="envoltura-sobre rosa" id="sobre1">
+
+            <div class="sobre">
+
+                <div class="carta">
+
+                    <div class="contenido">
+
+                        <h2>Mi Gatita ❤️</h2>
+
+                        <p>
+                            Te extraño de una forma que no se puede esconder.
+                            Hay días donde todo parece normal, pero basta un recuerdo tuyo
+                            para que el mundo se detenga un momento.
+
+                            <br><br>
+
+                            Extraño tu voz, tus detalles, tu manera de hacerme sentir
+                            tranquilidad incluso en los días difíciles.
+
+                            <br><br>
+
+                            No quiero aprender a quererte menos,
+                            porque lo que siento por ti nunca fue pequeño.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="corazon"></div>
+<button class="audio-toggle">⏸</button>
+            <div class="solapa-izquierda"></div>
+            <div class="solapa-derecha"></div>
+<p class="hint">Toca para ❤️ abrir ✉️</p>
+        </div>
+
+    </div>
+
+    <!-- SOBRE AZUL -->
+
+    <div class="contenedor">
+
+        <div class="envoltura-sobre azul" id="sobre2">
+
+            <div class="sobre">
+
+                <div class="carta">
+
+                    <div class="contenido">
+
+                        <h2>Solo Tú 💙</h2>
+
+                        <p>
+                            Hay personas que llegan y cambian algo dentro de uno.
+                            Tú hiciste eso conmigo.
+
+                            <br><br>
+
+                            Desde que apareciste,
+                            incluso los momentos simples se volvieron especiales.
+
+                            <br><br>
+
+                            Y aunque pase el tiempo,
+                            siempre habrá una parte de mí
+                            que sonría al recordarte.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="corazon"></div>
+<button class="audio-toggle">⏸</button>
+            <div class="solapa-izquierda"></div>
+            <div class="solapa-derecha"></div>
+
+        </div>
+<p class="hint">Toca para 💙 abrir ✉️</p>
+    </div>
+<!-- ========================================= -->
+<!-- TERCER SOBRE (AGREGAR DEBAJO DE LOS OTROS) -->
+<!-- ========================================= -->
+
+<div style="width:100%; display:flex; justify-content:center; margin-top:40px;">
+
+    <div class="contenedor">
+
+        <div class="envoltura-sobre morado" id="sobre3">
+
+            <div class="sobre">
+
+                <div class="carta">
+
+                    <div class="contenido">
+
+                        <h2>Una Última Cosita 💜</h2>
+
+                        <p>
+                            Si llegaste hasta aquí,
+                            probablemente ya sabes cuánto significas para mí.
+
+                            <br><br>
+
+                            Hay cosas que las palabras no logran explicar del todo,
+                            y por eso quería dejarte también algo más...
+                            algo que puedas escuchar.
+
+                            <br><br>
+
+                            Porque incluso cuando no estoy contigo,
+                            mi corazón sigue encontrando formas de hablarte.
+
+                            <br><br><br>
+
+                            <!-- BOTÓN AUDIO -->
+                            <div class="contenedor-audio">
+
+                                <button class="btn-audio" id="playCarta3">
+                                    ▶ Reproducir mensaje
+                                </button>
+
+                            </div>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="corazon"></div>
+<p class="hint">Toca para 💜 abrir ✉️</p>
+            <div class="solapa-izquierda"></div>
+            <div class="solapa-derecha"></div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<script>
+
+/* ============================== */
+/* CONFIG SOBRES */
+/* ============================== */
+
+const sobres = [
+
+    {
+        id:"sobre1",
+        audio:"💘Beautiful Female Love Song   Deep Love & Emotional Music 2026  Romantic Song🎼 - Song Mood.mp3",
+        emoji:"❤️"
+    },
+
+    {
+        id:"sobre2",
+        audio:"Antonio José - A Un Milímetro De Ti.mp3",
+        emoji:"💙"
+    },
+
+    {
+        id:"sobre3",
+        audio:null,
+        emoji:"💜"
+    }
+];
+
+/* ============================== */
+/* CORAZONES */
+/* ============================== */
+
+function crearCorazon(emoji){
+
+    const corazon = document.createElement("div");
+
+    corazon.className = "corazon-flotante";
+
+    corazon.innerHTML = emoji;
+
+    corazon.style.left =
+        Math.random()*100 + "vw";
+
+    corazon.style.fontSize =
+        (Math.random()*20 + 20) + "px";
+
+    corazon.style.animationDuration =
+        (Math.random()*3 + 3) + "s";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    },6000);
+
+}
+/* ================================= */
+/* CREAR ROSAS */
+/* ================================= */
+
+function crearRosa(sobre){
+
+    const rosa = document.createElement("div");
+
+    rosa.classList.add("rosa-flotante");
+
+    rosa.innerHTML = "🌹🌷🪻";
+
+    /* Posición inicial desde el centro */
+
+    rosa.style.left = "50%";
+
+    rosa.style.top = "70%";
+
+    /* Movimiento aleatorio */
+
+    const desplazamiento =
+        (Math.random() * 300 - 150) + "px";
+
+    rosa.style.setProperty("--x", desplazamiento);
+
+    /* Tamaño aleatorio */
+
+    rosa.style.fontSize =
+        (Math.random()*20 + 25) + "px";
+
+    sobre.appendChild(rosa);
+
+    setTimeout(()=>{
+
+        rosa.remove();
+
+    },4000);
+
+}
+/* ============================== */
+/* FUNCIONAMIENTO */
+/* ============================== */
+sobres.forEach(config=>{
+
+    const sobre =
+        document.getElementById(config.id);
+
+    const botonCorazon =
+        sobre.querySelector(".corazon");
+
+    const botonAudio =
+        sobre.querySelector(".audio-toggle");
+
+    const audio =
+        config.audio
+            ? new Audio(config.audio)
+            : null;
+
+    let intervalo;
+
+    /* ========================= */
+    /* ABRIR SOBRE */
+    /* ========================= */
+
+    botonCorazon.addEventListener("click",()=>{
+
+        sobre.classList.toggle("abierto");
+
+        /* ========================= */
+        /* ABIERTO */
+        /* ========================= */
+
+        if(sobre.classList.contains("abierto")){
+
+            /* AUDIO */
+
+            if(audio){
+
+                audio.play();
+
+                if(botonAudio){
+
+                    botonAudio.innerHTML = "⏸";
+
+                }
+
+            }
+
+            /* CORAZONES */
+
+            intervalo = setInterval(()=>{
+
+                for(let i=0;i<4;i++){
+
+                    crearCorazon(config.emoji);
+
+                }
+
+            },400);
+
+            /* ROSAS */
+
+            for(let i=0;i<12;i++){
+
+                setTimeout(()=>{
+
+                    crearRosa(sobre);
+
+                }, i * 120);
+
+            }
+
+        }
+
+        /* ========================= */
+        /* CERRADO */
+        /* ========================= */
+
+        else{
+
+            clearInterval(intervalo);
+
+            if(audio){
+
+                audio.pause();
+
+                audio.currentTime = 0;
+
+            }
+
+        }
+
+    });
+
+    /* ========================= */
+    /* PAUSAR / REANUDAR */
+    /* ========================= */
+
+    if(botonAudio && audio){
+
+        botonAudio.addEventListener("click",(e)=>{
+
+            e.stopPropagation();
+
+            if(audio.paused){
+
+                audio.play();
+
+                botonAudio.innerHTML = "⏸";
+
+            }
+
+            else{
+
+                audio.pause();
+
+                botonAudio.innerHTML = "▶";
+
+            }
+
+        });
+
+    }
+
+});
+/**/
+/* ================================= */
+/* AUDIO DENTRO DE LA CARTA 3 */
+/* ================================= */
+
+const botonCarta3 =
+    document.getElementById("playCarta3");
+
+const audioCarta3 =
+    new Audio("Perfect (spanish version) - Kevin & Karla.mp3");
+
+let reproduciendo = false;
+
+botonCarta3.addEventListener("click",()=>{
+
+    if(!reproduciendo){
+
+        audioCarta3.play();
+
+        botonCarta3.innerHTML =
+            "⏸ Pausar mensaje";
+
+        reproduciendo = true;
+
+    }else{
+
+        audioCarta3.pause();
+
+        botonCarta3.innerHTML =
+            "▶ Reproducir mensaje";
+
+        reproduciendo = false;
+    }
+
+});
+
+/* Cuando termine */
+
+audioCarta3.addEventListener("ended",()=>{
+
+    botonCarta3.innerHTML =
+        "▶ Reproducir mensaje";
+
+    reproduciendo = false;
+
+});
+</script>
+
+</body>
+</html>
